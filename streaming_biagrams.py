@@ -27,8 +27,9 @@ if __name__ == "__main__":
     bigram_counts = bigrams_window.reduceByKey(lambda a, b: a + b)
 
     bigram_counts.pprint()
-
+    print()
     print("Listening on port 9999")
-    
+    print("---------------------------------------------------------")
+    print()
     ssc.start()
     ssc.awaitTermination()
