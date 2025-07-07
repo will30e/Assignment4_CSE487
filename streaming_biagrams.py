@@ -18,3 +18,12 @@ if __name__ == "__main__":
     sc = SparkContext(appName="BigramStream", master="local[2]")
     ssc = StreamingContext(sc, batchDuration=1)
     ssc.checkpoint("/tmp/spark_streaming_checkpoint")
+
+    # Step 2: Create DStream from TCP source
+    lines = ssc.socketTextStream("localhost", 9999)
+
+    lines.pprint()
+
+    ssc.start()
+    ssc.awaitTermination()
+    
