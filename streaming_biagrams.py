@@ -15,6 +15,6 @@ def make_bigrams(words):
 
 if __name__ == "__main__":
     # Step 1: Create SparkContext 
-    sc = SparkContext(appName="BigramStream")
+    sc = SparkContext(appName="BigramStream", master="local[2]")
     ssc = StreamingContext(sc, batchDuration=1)
     ssc.checkpoint("/tmp/spark_streaming_checkpoint")
